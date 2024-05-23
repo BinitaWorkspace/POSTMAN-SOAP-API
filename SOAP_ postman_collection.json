@@ -1,0 +1,204 @@
+{
+	"info": {
+		"_postman_id": "1e66016a-5c2b-4546-8e65-f18362d5f46c",
+		"name": "SOAP API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34779269"
+	},
+	"item": [
+		{
+			"name": "SOAP get temperature",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">\r\n\r\n  <soap12:Body>\r\n\r\n    <FahrenheitToCelsius xmlns=\"https://www.w3schools.com/xml/\">\r\n\r\n      <Fahrenheit>75</Fahrenheit>\r\n\r\n    </FahrenheitToCelsius>\r\n\r\n  </soap12:Body>\r\n\r\n</soap12:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.w3schools.com/xml/tempconvert.asmx",
+					"protocol": "https",
+					"host": [
+						"www",
+						"w3schools",
+						"com"
+					],
+					"path": [
+						"xml",
+						"tempconvert.asmx"
+					],
+					"query": [
+						{
+							"key": "WSDL",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "country code",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<Envelope xmlns=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <Body>\r\n        <ListOfCountryNamesByCode xmlns=\"http://www.oorsprong.org/websamples.countryinfo\"/>\r\n    </Body>\r\n</Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL",
+					"protocol": "http",
+					"host": [
+						"webservices",
+						"oorsprong",
+						"org"
+					],
+					"path": [
+						"websamples.countryinfo",
+						"CountryInfoService.wso"
+					],
+					"query": [
+						{
+							"key": "WSDL",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOAP country capital",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<Envelope xmlns=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <Body>\r\n//Get the capital of the city\r\n        \r\n        <CapitalCity xmlns=\"http://www.oorsprong.org/websamples.countryinfo\">\r\n            <sCountryISOCode>AU</sCountryISOCode>\r\n        </CapitalCity>\r\n        \r\n    </Body>\r\n</Envelope>\r\n",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL",
+					"protocol": "http",
+					"host": [
+						"webservices",
+						"oorsprong",
+						"org"
+					],
+					"path": [
+						"websamples.countryinfo",
+						"CountryInfoService.wso"
+					],
+					"query": [
+						{
+							"key": "WSDL",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SOAP Currency",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<Envelope xmlns=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <Body>\r\n        <CountryCurrency xmlns=\"http://www.oorsprong.org/websamples.countryinfo\">\r\n            <sCountryISOCode>AU</sCountryISOCode>\r\n        </CountryCurrency>\r\n    </Body>\r\n</Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://webservices.oorsprong.org/websamples.countryinfo/CountryInfoService.wso?WSDL",
+					"protocol": "http",
+					"host": [
+						"webservices",
+						"oorsprong",
+						"org"
+					],
+					"path": [
+						"websamples.countryinfo",
+						"CountryInfoService.wso"
+					],
+					"query": [
+						{
+							"key": "WSDL",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
